@@ -24,7 +24,7 @@ HOSTNAME=`oc get nodes -ojsonpath='{.items[0].metadata.labels.ibm-cloud\.kuberne
 SERVICEPORT=`oc get svc guestbook -n mongo -o=jsonpath='{.spec.ports[0].nodePort}'`
 echo "=== App available at -> http://$HOSTNAME:$SERVICEPORT ==="
 oc get pods -n mongo
-echo "=== Use `oc pods -n mongo` to check if the pod is status === "
+echo "=== Use 'oc get pods -n mongo' to check if the pod is status === "
 else
   echo "=== Script stopped ===";
 fi

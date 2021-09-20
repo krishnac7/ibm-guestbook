@@ -14,7 +14,7 @@ export MONGODB_PASSWORD=$(kubectl get secret --namespace mongo mongo-mongodb -o 
 oc get all -n mongo
 oc get pvc -n mongo
 echo "=== Please wait till PV is created and mongo pod is up, it usually takes upto 3 minutes ==="
-echo "=== Use `oc pods -n mongo` to check if the pod is status === "
+echo "=== Use 'oc get pods -n mongo' to check if the pod is status === "
 else
   echo "=== Script stopped ===";
 fi
