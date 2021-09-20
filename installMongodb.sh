@@ -8,7 +8,7 @@ cat mongdb-install-dryrun.yaml
 read -p "=== Continue to install (y/n)? " CONT
 if [ "$CONT" = "y" ]; then
 USER_PASS=`openssl rand -base64 12 | tr -d "=+/"`
-helm install mongo bitnami/mongodb --set global.storageClass=ibmc-block-gold,auth.password=$USER_PASS,auth.username=guestbook-admin,auth.database=guestbook,containerSecurityContext.enabled=false,podSecurityContext.enabled=false -n mongo
+helm install mongo bitnami/mongodb --set global.storageClass=ibmc-block-gold,auth.password=`$USER_PASS`,auth.username=guestbook-admin,auth.database=guestbook,containerSecurityContext.enabled=false,podSecurityContext.enabled=false -n mongo
 oc get all -n mongo
 oc get pvc -n mongo
 echo "=== Please wait till PV is created and mongo pod is up, it usually takes upto 3 minutes ==="

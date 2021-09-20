@@ -20,7 +20,7 @@ oc create secret generic mongodb --from-literal=username=guestbook-admin --from-
 cd $WORK_DIR/guestbook-nodejs-config/
 echo "=== Applying guestbook yamls.. ==="
 oc apply -f . -n mongo
-HOSTNAME=`oc get nodes -ojsonpath='{.items[0].metadata.labels.ibm-cloud\.kubernetes\.io\/external-ip}'`
+HOSTNAME=`oc get nodes -o=jsonpath='{.items[0].metadata.labels.ibm-cloud\.kubernetes\.io\/external-ip}'`
 SERVICEPORT=`oc get svc guestbook -n mongo -o=jsonpath='{.spec.ports[0].nodePort}'`
 echo "=== App available at -> http://$HOSTNAME:$SERVICEPORT ==="
 oc get pods -n mongo
