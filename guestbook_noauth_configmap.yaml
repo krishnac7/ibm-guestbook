@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook
+data:
+  NODE_ENV: "mongo"
+  MONGO_HOST: "mongo-mongodb"
+  MONGO_PORT: "27017"
+  MONGO_DB: "entries"
+  MONGO_AUTH_DB: "admin"

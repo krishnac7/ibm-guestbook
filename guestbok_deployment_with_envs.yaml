@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook
+  namespace: guestbook
+  labels:
+    app: guestbook
+spec:
+  selector:
+    matchLabels:
+      app: guestbook
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: guestbook
+    spec:
+      containers:
+      - name: guestbook
+        image: remkohdev/guestbook-nodejs:1.0.0
+        ports:
+        - name: http
+          containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "mongo"
+        - name: MONGO_HOST
+          value: "mongo-mongodb"
+        - name: MONGO_PORT
+          value: "27017"
+        - name: MONGO_DB
+          value: "entries"
+        - name: MONGO_AUTH_DB
+          value: "admin"
+        - name: MONGO_USER
+          value: "mongoadmin"
+        - name: MONGO_PASS
+          value: "m0n90s3cr3t"
